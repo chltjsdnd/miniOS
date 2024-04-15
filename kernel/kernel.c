@@ -20,8 +20,17 @@ int main() {
             break;
         }
 
-        if (strcmp(input,"minisystem") == 0){
+        else if (strcmp(input,"minisystem") == 0){
             minisystem();
+        }
+        else if (strcmp(input, "calc") == 0){
+        	calculator();
+        }
+        else if (strcmp(input, "custom_fork") == 0){
+        	custom_fork();
+        }
+        else if (strcmp(input, "ipc_pipe") == 0){
+        	ipc_pipe();
         }
         else system(input);
     }
@@ -35,4 +44,30 @@ int main() {
 
 void print_minios(char* str) {
         printf("%s\n",str);
+}
+
+void calculator(){
+	float a,b;
+	char operation[10];
+	
+	printf("select operator(+,-,*,/) : ");
+	scanf("%s", operation);
+	printf("input two numbers : ");
+	scanf("%f %f", &a, &b);
+	
+	if(strcmp(operation, "+") == 0){
+		printf("result : %.1f\n", add(a,b));
+	}
+	else if(strcmp(operation, "-") == 0){
+		printf("result : %.1f\n", subtract(a,b));
+	}
+	else if(strcmp(operation, "*") == 0){
+		printf("result : %.1f\n", multiply(a,b));
+	}
+	else if(strcmp(operation, "/") == 0){
+		printf("result : %.1f\n", divide(a,b));
+	}
+	else{
+		printf("unknown operation!\n");
+	}
 }
